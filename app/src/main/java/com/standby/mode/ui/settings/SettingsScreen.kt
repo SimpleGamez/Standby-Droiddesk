@@ -1,6 +1,7 @@
 package com.standby.mode.ui.settings
 
 import android.content.Intent
+import android.net.Uri
 import android.provider.Settings as AndroidSettings
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -12,12 +13,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ViewQuilt
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -32,6 +35,7 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -78,6 +82,7 @@ fun SettingsScreen(
     var showClockStyleMenu by remember { mutableStateOf(false) }
     var showNightModeMenu by remember { mutableStateOf(false) }
     var showProfileMenu by remember { mutableStateOf(false) }
+    var showNotificationHelpDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -329,10 +334,7 @@ fun SettingsScreen(
                     SettingRow(
                         title = "Media & Notification Access",
                         subtitle = "Enable for YouTube, Apple Music, and full Now Playing controls",
-                        onClick = {
-                            val intent = Intent(AndroidSettings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
-                            context.startActivity(intent)
-                        }
+                        onClick = { showNotificationHelpDialog = true }
                     )
                     SettingRow(
                         title = "OEM Background Optimization Fixes",
@@ -345,6 +347,58 @@ fun SettingsScreen(
             item {
                 Spacer(modifier = Modifier.height(24.dp))
             }
+        }
+
+        if (showNotificationHelpDialog) {
+            AlertDialog(
+                onDismissRequest = { showNotificationHelpDialog = false },
+                title = { Text("Unlock Notification & Media Access") },
+                text = {
+                    Column {
+                        Text(
+                            "On Android 13, 14, and 15, sideloaded apps show 'For your security, this setting is currently unavailable'.\n\n" +
+                                    "To unlock it in 3 quick steps:\n" +
+                                    "1. Tap '1. Open App Info' below.\n" +
+                                    "2. In the top-right corner of App Info, tap the 3 dots (⋮).\n" +
+                                    "3. Tap 'Allow restricted settings' (verify with your fingerprint/PIN).\n" +
+                                    "4. Tap '2. Open Notification Access' and turn the switch ON."
+                        )
+                    }
+                },
+                confirmButton = {
+                    Button(
+                        onClick = {
+                            try {
+                                val intent = Intent(AndroidSettings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                    data = Uri.parse("package:${context.packageName}")
+                                }
+                                context.startActivity(intent)
+                            } catch (e: Exception) {
+                                val intent = Intent(AndroidSettings.ACTION_SETTINGS)
+                                context.startActivity(intent)
+                            }
+                        }
+                    ) {
+                        Text("1. Open App Info")
+                    }
+                },
+                dismissButton = {
+                    Row {
+                        OutlinedButton(
+                            onClick = {
+                                val intent = Intent(AndroidSettings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
+                                context.startActivity(intent)
+                            }
+                        ) {
+                            Text("2. Open Access")
+                        }
+                        Spacer(modifier = Modifier.width(8.dp))
+                        TextButton(onClick = { showNotificationHelpDialog = false }) {
+                            Text("Close")
+                        }
+                    }
+                }
+            )
         }
     }
 }
