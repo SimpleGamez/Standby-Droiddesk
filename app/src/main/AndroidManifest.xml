@@ -53,7 +53,7 @@
         <activity
             android:name=".ui.standby.StandbyActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="sensorLandscape"
             android:showWhenLocked="true"
             android:theme="@style/Theme.StandByMode"
