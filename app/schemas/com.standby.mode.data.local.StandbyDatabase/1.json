@@ -1,0 +1,370 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "b32b6177353a940a69caed689ebede14",
+    "entities": [
+      {
+        "tableName": "profiles",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `isActive` INTEGER NOT NULL, `triggerOnChargerConnected` INTEGER NOT NULL, `triggerOnChargingAndLandscape` INTEGER NOT NULL, `triggerOnChargingAndLocked` INTEGER NOT NULL, `triggerOnChargingAndStationary` INTEGER NOT NULL, `triggerManualOnly` INTEGER NOT NULL, `themeColorPalette` TEXT NOT NULL, `themeCustomAccentColor` INTEGER, `themeUseGradientBackground` INTEGER NOT NULL, `themeGradientColors` TEXT NOT NULL, `themeFontFamily` TEXT NOT NULL, `themeFontSize` REAL NOT NULL, `themeFontWeight` INTEGER NOT NULL, `themeLetterSpacing` REAL NOT NULL, `themeUseDynamicColor` INTEGER NOT NULL, `brightnessMode` TEXT NOT NULL, `brightnessManualLevel` REAL NOT NULL, `brightnessScheduledDimTime` TEXT NOT NULL, `brightnessScheduledBrightTime` TEXT NOT NULL, `brightnessDimLevel` REAL NOT NULL, `brightnessNightMode` TEXT NOT NULL, `brightnessNightStartTime` TEXT NOT NULL, `brightnessNightEndTime` TEXT NOT NULL, `burnInPixelShiftEnabled` INTEGER NOT NULL, `burnInPixelShiftAmount` INTEGER NOT NULL, `burnInPixelShiftIntervalSeconds` INTEGER NOT NULL, `burnInPeriodicMotionEnabled` INTEGER NOT NULL, `burnInAutoDimEnabled` INTEGER NOT NULL, `burnInAutoDimAfterMinutes` INTEGER NOT NULL, `burnInScreenOffEnabled` INTEGER NOT NULL, `burnInScreenOffAfterMinutes` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isActive",
+            "columnName": "isActive",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "triggerOnChargerConnected",
+            "columnName": "triggerOnChargerConnected",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "triggerOnChargingAndLandscape",
+            "columnName": "triggerOnChargingAndLandscape",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "triggerOnChargingAndLocked",
+            "columnName": "triggerOnChargingAndLocked",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "triggerOnChargingAndStationary",
+            "columnName": "triggerOnChargingAndStationary",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "triggerManualOnly",
+            "columnName": "triggerManualOnly",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "themeColorPalette",
+            "columnName": "themeColorPalette",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "themeCustomAccentColor",
+            "columnName": "themeCustomAccentColor",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "themeUseGradientBackground",
+            "columnName": "themeUseGradientBackground",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "themeGradientColors",
+            "columnName": "themeGradientColors",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "themeFontFamily",
+            "columnName": "themeFontFamily",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "themeFontSize",
+            "columnName": "themeFontSize",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "themeFontWeight",
+            "columnName": "themeFontWeight",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "themeLetterSpacing",
+            "columnName": "themeLetterSpacing",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "themeUseDynamicColor",
+            "columnName": "themeUseDynamicColor",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "brightnessMode",
+            "columnName": "brightnessMode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "brightnessManualLevel",
+            "columnName": "brightnessManualLevel",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "brightnessScheduledDimTime",
+            "columnName": "brightnessScheduledDimTime",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "brightnessScheduledBrightTime",
+            "columnName": "brightnessScheduledBrightTime",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "brightnessDimLevel",
+            "columnName": "brightnessDimLevel",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "brightnessNightMode",
+            "columnName": "brightnessNightMode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "brightnessNightStartTime",
+            "columnName": "brightnessNightStartTime",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "brightnessNightEndTime",
+            "columnName": "brightnessNightEndTime",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "burnInPixelShiftEnabled",
+            "columnName": "burnInPixelShiftEnabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "burnInPixelShiftAmount",
+            "columnName": "burnInPixelShiftAmount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "burnInPixelShiftIntervalSeconds",
+            "columnName": "burnInPixelShiftIntervalSeconds",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "burnInPeriodicMotionEnabled",
+            "columnName": "burnInPeriodicMotionEnabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "burnInAutoDimEnabled",
+            "columnName": "burnInAutoDimEnabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "burnInAutoDimAfterMinutes",
+            "columnName": "burnInAutoDimAfterMinutes",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "burnInScreenOffEnabled",
+            "columnName": "burnInScreenOffEnabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "burnInScreenOffAfterMinutes",
+            "columnName": "burnInScreenOffAfterMinutes",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "pages",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `profileId` TEXT NOT NULL, `name` TEXT NOT NULL, `sortOrder` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`profileId`) REFERENCES `profiles`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "profileId",
+            "columnName": "profileId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sortOrder",
+            "columnName": "sortOrder",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_pages_profileId",
+            "unique": false,
+            "columnNames": [
+              "profileId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pages_profileId` ON `${TABLE_NAME}` (`profileId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "profiles",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "profileId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "modules",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `pageId` TEXT NOT NULL, `type` TEXT NOT NULL, `row` INTEGER NOT NULL, `column` INTEGER NOT NULL, `rowSpan` INTEGER NOT NULL, `colSpan` INTEGER NOT NULL, `config` TEXT NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`pageId`) REFERENCES `pages`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pageId",
+            "columnName": "pageId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "row",
+            "columnName": "row",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "column",
+            "columnName": "column",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rowSpan",
+            "columnName": "rowSpan",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "colSpan",
+            "columnName": "colSpan",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "config",
+            "columnName": "config",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_modules_pageId",
+            "unique": false,
+            "columnNames": [
+              "pageId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_modules_pageId` ON `${TABLE_NAME}` (`pageId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "pages",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "pageId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b32b6177353a940a69caed689ebede14')"
+    ]
+  }
+}
