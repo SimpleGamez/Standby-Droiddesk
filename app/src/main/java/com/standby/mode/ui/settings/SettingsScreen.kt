@@ -81,7 +81,7 @@ fun SettingsScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("StandBy Mode Settings") }
+                title = { Text("Standby Droiddesk Settings") }
             )
         },
         snackbarHost = { SnackbarHost(snackbarHostState) }

@@ -1,4 +1,9 @@
-# StandBy Mode for Android
+# Standby-Droiddesk
+
+[![GitHub Repository](https://img.shields.io/badge/GitHub-SimpleGamez%2FStandby--Droiddesk-blue?logo=github)](https://github.com/SimpleGamez/Standby-Droiddesk)
+[![Platform](https://img.shields.io/badge/Platform-Android%208.0%2B%20(API%2026%2B)-green.svg)](https://developer.android.com)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-purple.svg)](https://kotlinlang.org)
+[![Compose](https://img.shields.io/badge/Jetpack%20Compose-Material%203-blue.svg)](https://developer.android.com/jetpack/compose)
 
 A production-grade, full-screen, glanceable always-on display for Android written 100% in native **Kotlin** and **Jetpack Compose (Material 3)**.
 
@@ -123,7 +128,12 @@ graph TD
 - **Android SDK Platform 35**
 - **Android Gradle Plugin 8.7.3**
 
-### Build with Gradle
+### Clone & Build
+```bash
+git clone https://github.com/SimpleGamez/Standby-Droiddesk.git
+cd Standby-Droiddesk
+```
+
 To compile the debug APK:
 ```bash
 ./gradlew assembleDebug
@@ -147,10 +157,10 @@ To run unit tests:
    Rotate the emulator using `Ctrl + Left/Right` (or `Cmd + Left/Right` on macOS).
 4. **Test Native DreamService (Daydream)**:
    - Go to Android system **Settings -> Display -> Screen saver**.
-   - Select **StandBy Mode**.
+   - Select **Standby Droiddesk**.
    - Tap **Start now** to see the native DreamService in action.
 5. **Test Quick Settings Tile**:
    - Pull down the notification shade twice.
-   - Tap the pencil/edit icon and drag the **StandBy** tile to your active tiles.
-   - Tap the **StandBy** tile to toggle standby mode on and off.
+   - Tap the pencil/edit icon and drag the **Standby Droiddesk** tile to your active tiles.
+   - Tap the **Standby Droiddesk** tile to toggle standby mode on and off.
 

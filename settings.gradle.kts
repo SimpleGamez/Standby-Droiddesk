@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "StandByMode"
+rootProject.name = "Standby-Droiddesk"
 include(":app")
