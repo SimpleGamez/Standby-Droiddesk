@@ -16,12 +16,15 @@ class StandbyNotificationListenerService : NotificationListenerService() {
 
         var isConnected: Boolean = false
             private set
+
+        var onConnectedCallback: (() -> Unit)? = null
     }
 
     override fun onListenerConnected() {
         super.onListenerConnected()
         isConnected = true
         updateNotifications()
+        onConnectedCallback?.invoke()
     }
 
     override fun onListenerDisconnected() {
@@ -42,7 +45,11 @@ class StandbyNotificationListenerService : NotificationListenerService() {
 
     private fun updateNotifications() {
         try {
-            val sbns = activeNotifications.orEmpty()
+            val sbns = try {
+                super.getActiveNotifications()?.toList() ?: emptyList()
+            } catch (e: Exception) {
+                emptyList()
+            }
             val pm = packageManager
             val items = sbns.mapNotNull { sbn ->
                 // Skip ongoing/persistent notifications (like foreground services)

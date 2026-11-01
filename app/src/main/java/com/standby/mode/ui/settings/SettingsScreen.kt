@@ -1,6 +1,7 @@
 package com.standby.mode.ui.settings
 
 import android.content.Intent
+import android.provider.Settings as AndroidSettings
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -325,6 +326,14 @@ fun SettingsScreen(
             item {
                 SectionHeader("SYSTEM INTEGRATION & OEM")
                 SettingsCard {
+                    SettingRow(
+                        title = "Media & Notification Access",
+                        subtitle = "Enable for YouTube, Apple Music, and full Now Playing controls",
+                        onClick = {
+                            val intent = Intent(AndroidSettings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
+                            context.startActivity(intent)
+                        }
+                    )
                     SettingRow(
                         title = "OEM Background Optimization Fixes",
                         subtitle = "Samsung, Xiaomi, OnePlus battery killer settings",
