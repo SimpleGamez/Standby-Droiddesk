@@ -11,6 +11,20 @@ Designed for when the phone is docked and charging (e.g., on a nightstand, desk 
 
 ---
 
+## Screenshots
+
+### Full-Screen Standby Display (Landscape)
+| Page 1: Clock & Live Open-Meteo Weather | Page 2: Media Controls & Calendar Schedule |
+|:---:|:---:|
+| ![Standby Clock and Weather](screenshots/standby_landscape.png) | ![Standby Media and Calendar](screenshots/standby_page2.png) |
+
+### Settings & Customization
+| Settings & Live Preview Pane | Interactive Layout & Widget Editor | Widget Picker Library |
+|:---:|:---:|:---:|
+| <img src="screenshots/settings_preview.png" width="280" alt="Settings & Live Preview" /> | <img src="screenshots/layout_editor.png" width="280" alt="Layout Editor" /> | <img src="screenshots/module_picker.png" width="280" alt="Module Picker" /> |
+
+---
+
 ## Architecture Overview
 
 ```mermaid
