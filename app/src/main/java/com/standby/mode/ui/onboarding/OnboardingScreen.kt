@@ -47,7 +47,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.standby.mode.util.hasNotificationListenerPermission
 
 @Composable
 fun OnboardingScreen(
@@ -69,10 +68,6 @@ fun OnboardingScreen(
             context.checkSelfPermission(Manifest.permission.READ_CALENDAR) ==
                     android.content.pm.PackageManager.PERMISSION_GRANTED
         )
-    }
-
-    var hasListenerPermission by remember {
-        mutableStateOf(context.hasNotificationListenerPermission())
     }
 
     val powerManager = context.getSystemService(Context.POWER_SERVICE) as? PowerManager
@@ -145,18 +140,6 @@ fun OnboardingScreen(
                 )
             }
 
-            // Notification Listener
-            item {
-                PermissionCard(
-                    title = "Media & Notification Listener (Optional)",
-                    desc = "Used for Now Playing album art / media playback controls and notification glance.",
-                    isGranted = hasListenerPermission,
-                    onGrant = {
-                        val intent = Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
-                        context.startActivity(intent)
-                    }
-                )
-            }
 
             // Battery Optimization
             item {
