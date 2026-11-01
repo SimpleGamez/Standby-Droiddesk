@@ -139,6 +139,12 @@ To compile the debug APK:
 ./gradlew assembleDebug
 ```
 
+To build a signed, optimized release APK:
+```bash
+./gradlew assembleRelease
+# Output: release/Standby-Droiddesk-v1.0.0.apk (or app/build/outputs/apk/release/app-release.apk)
+```
+
 To run unit tests:
 ```bash
 ./gradlew testDebugUnitTest

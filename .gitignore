@@ -12,4 +12,7 @@ app/build/
 build/
 *.hprof
 .cxx/
+*.jks
+*.keystore
+release/
 
