@@ -403,7 +403,7 @@ fun RenderModule(
     when (module.type) {
         ModuleType.CLOCK -> {
             val style = module.config["style"]?.let {
-                runCatching { ClockStyle.valueOf(it) }.getOrDefault(settings.clockStyle)
+                runCatching { ClockStyle.valueOf(it) }.getOrNull()
             } ?: settings.clockStyle
             ClockModule(
                 style = style,

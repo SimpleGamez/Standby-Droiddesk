@@ -115,7 +115,10 @@ class StandbyForegroundService : Service() {
             .setContentText("Display is active while docked")
             .setSmallIcon(R.drawable.ic_standby)
             .setOngoing(true)
-            .setPriority(NotificationCompat.PRIORITY_LOW)
+            .setPriority(NotificationCompat.PRIORITY_MAX)
+            .setCategory(NotificationCompat.CATEGORY_ALARM)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+            .setFullScreenIntent(openPendingIntent, true)
             .setContentIntent(openPendingIntent)
             .addAction(0, "Settings", settingsPendingIntent)
             .addAction(0, "Exit", stopPendingIntent)
@@ -138,6 +141,19 @@ class StandbyForegroundService : Service() {
 
     private fun acquireWakeLock() {
         val powerManager = getSystemService(Context.POWER_SERVICE) as? PowerManager
+
+        // Wake screen immediately if turning on from locked/sleep state
+        try {
+            @Suppress("DEPRECATION")
+            val screenLock = powerManager?.newWakeLock(
+                PowerManager.SCREEN_BRIGHT_WAKE_LOCK or PowerManager.ACQUIRE_CAUSES_WAKEUP or PowerManager.ON_AFTER_RELEASE,
+                "StandByMode::ScreenWakeLock"
+            )
+            screenLock?.acquire(3000L)
+        } catch (e: Exception) {
+            // Ignore if restricted
+        }
+
         wakeLock = powerManager?.newWakeLock(
             PowerManager.PARTIAL_WAKE_LOCK,
             "StandByMode::ForegroundWakeLock"
@@ -178,11 +194,12 @@ class StandbyForegroundService : Service() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
-                "StandBy Display",
-                NotificationManager.IMPORTANCE_LOW
+                "StandBy Active Display",
+                NotificationManager.IMPORTANCE_HIGH
             ).apply {
-                description = "Shows persistent status while StandBy mode is active"
+                description = "Shows persistent status and wakes StandBy mode when docked"
                 setShowBadge(false)
+                lockscreenVisibility = Notification.VISIBILITY_PUBLIC
             }
             val manager = getSystemService(NotificationManager::class.java)
             manager.createNotificationChannel(channel)

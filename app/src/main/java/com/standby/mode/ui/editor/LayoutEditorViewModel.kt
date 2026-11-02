@@ -3,6 +3,7 @@ package com.standby.mode.ui.editor
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.standby.mode.data.repository.ProfileRepository
+import com.standby.mode.data.repository.SettingsRepository
 import com.standby.mode.domain.model.ClockStyle
 import com.standby.mode.domain.model.ModuleType
 import com.standby.mode.domain.model.PageLayout
@@ -18,7 +19,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LayoutEditorViewModel @Inject constructor(
-    private val profileRepository: ProfileRepository
+    private val profileRepository: ProfileRepository,
+    private val settingsRepository: SettingsRepository
 ) : ViewModel() {
 
     private val _currentProfile = MutableStateFlow<StandbyProfile?>(null)
@@ -127,6 +129,14 @@ class LayoutEditorViewModel @Inject constructor(
         val updatedPages = profile.pages.toMutableList().apply { set(pageIdx, updatedPage) }
         _currentProfile.value = profile.copy(pages = updatedPages)
         saveChanges()
+
+        if (configKey == "style") {
+            runCatching { ClockStyle.valueOf(configValue) }.getOrNull()?.let { style ->
+                viewModelScope.launch {
+                    settingsRepository.updateSettings { it.copy(clockStyle = style) }
+                }
+            }
+        }
     }
 
     fun moveModuleToColumn(moduleId: String, targetColumn: Int) {

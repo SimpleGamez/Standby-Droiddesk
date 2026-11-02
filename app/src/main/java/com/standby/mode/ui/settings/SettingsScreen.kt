@@ -276,7 +276,7 @@ fun SettingsScreen(
                     SettingSwitchRow(
                         title = "Exit StandBy on Unplug",
                         checked = settings.exitOnUnplug,
-                        onCheckedChange = { viewModel.updateTriggerConfig { it } /* updated in settings */ }
+                        onCheckedChange = { viewModel.updateExitOnUnplug(it) }
                     )
                 }
             }
@@ -331,6 +331,19 @@ fun SettingsScreen(
             item {
                 SectionHeader("SYSTEM INTEGRATION & OEM")
                 SettingsCard {
+                    SettingRow(
+                        title = "System Screen Saver (Daydream)",
+                        subtitle = "Launch StandBy automatically on lock screen when charging",
+                        onClick = {
+                            try {
+                                val intent = Intent(AndroidSettings.ACTION_DREAM_SETTINGS)
+                                context.startActivity(intent)
+                            } catch (e: Exception) {
+                                val intent = Intent(AndroidSettings.ACTION_SETTINGS)
+                                context.startActivity(intent)
+                            }
+                        }
+                    )
                     SettingRow(
                         title = "Media & Notification Access",
                         subtitle = "Enable for YouTube, Apple Music, and full Now Playing controls",

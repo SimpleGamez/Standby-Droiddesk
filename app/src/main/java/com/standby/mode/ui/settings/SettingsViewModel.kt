@@ -9,6 +9,7 @@ import com.standby.mode.domain.model.BrightnessConfig
 import com.standby.mode.domain.model.BurnInConfig
 import com.standby.mode.domain.model.ClockStyle
 import com.standby.mode.domain.model.ColorPalette
+import com.standby.mode.domain.model.ModuleType
 import com.standby.mode.domain.model.NightMode
 import com.standby.mode.domain.model.StandbyProfile
 import com.standby.mode.domain.model.StandbySettings
@@ -68,6 +69,26 @@ class SettingsViewModel @Inject constructor(
     fun updateClockStyle(style: ClockStyle) {
         viewModelScope.launch {
             settingsRepository.updateSettings { it.copy(clockStyle = style) }
+            val profile = activeProfile.value ?: return@launch
+            val updatedPages = profile.pages.map { page ->
+                page.copy(
+                    modules = page.modules.map { mod ->
+                        if (mod.type == ModuleType.CLOCK) {
+                            mod.copy(config = mod.config + ("style" to style.name))
+                        } else {
+                            mod
+                        }
+                    }
+                )
+            }
+            profileRepository.saveProfile(profile.copy(pages = updatedPages))
+            _message.value = "Clock style set to ${style.name.replace('_', ' ')}"
+        }
+    }
+
+    fun updateExitOnUnplug(enabled: Boolean) {
+        viewModelScope.launch {
+            settingsRepository.updateSettings { it.copy(exitOnUnplug = enabled) }
         }
     }
 
